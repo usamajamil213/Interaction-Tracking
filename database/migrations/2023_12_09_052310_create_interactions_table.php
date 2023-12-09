@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('interactions', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->unique();
+            $table->string('label');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('type');
             $table->timestamps();
         });
     }

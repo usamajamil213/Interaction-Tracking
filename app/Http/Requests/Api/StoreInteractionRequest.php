@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Requests\Api;
-use Illuminate\Foundation\Http\FormRequest;
+
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-class SigninRequest extends FormRequest
+
+class StoreInteractionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +26,8 @@ class SigninRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'    => 'required|email',
-            'password' => 'required|string',
+            'label' => 'required|string',
+            'type' => 'required|string',
         ];
     }
     protected function failedValidation(Validator $validator)
