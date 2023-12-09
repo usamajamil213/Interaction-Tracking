@@ -19,7 +19,7 @@ class InteractionController extends Controller
     public function index()
     {
         try {
-            $interactions = Interaction::all();
+            $interactions = Interaction::where('user_id',Auth::user()->id)->get();
             return InteractionResource::collection($interactions);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Server Error'], 500);
