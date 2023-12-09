@@ -24,4 +24,6 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
 });
 Route::middleware('auth:sanctum')->prefix('user')->group(function () {
     Route::resource('interactions', InteractionController::class);
+    Route::post('interactions/{interaction}/events', [InteractionController::class, 'simulateEvent']);
+    Route::get('/interactions/{interaction}/statistics', [InteractionController::class, 'getStatistics']);
 });
